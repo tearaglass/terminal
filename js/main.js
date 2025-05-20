@@ -192,9 +192,6 @@ function handleCommand(cmd) {
       return `Opening ${cmd}...`;
   } else if (cmd === "summon") {
     document.body.classList.add('glitch');
-    setTimeout(() => {
-      window.location.href = "clio.html";
-    }, 500);
     return `CLIO is sleeping...`;
   } else if (cmd === "divine") {
     document.body.classList.add('glitch');
