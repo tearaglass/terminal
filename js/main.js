@@ -192,7 +192,7 @@ function handleCommand(cmd) {
       return `Opening ${cmd}...`;
   } else if (cmd === "summon") {
     document.body.classList.add('glitch');
-    return `CLIO is sleeping...`;
+    return `CLIO is sleeping...for now...`;
   } else if (cmd === "divine") {
     document.body.classList.add('glitch');
     setTimeout(() => {
