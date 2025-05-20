@@ -200,7 +200,7 @@ function handleCommand(cmd) {
     }, 500);
     return `Opening divine...`;
   } else if (cmd === "about") {
-    const aboutSummary = `Delaney Mills: artist, taste engineer, rogue archivist. <a href="/archive/archive.html" style="color: #fcb8ec;">Read more</a>`;
+    const aboutSummary = `Delaney Mills: artist, taste engineer, rogue archivist. <a href="https://tearaglass.github.io/terminal/archive/archive.html" style="color: #fcb8ec;">Read more</a>`;
     createPopup('About', `<p>${aboutSummary}</p>`);
     return null;
   } else if (cmd === "playlist") {
