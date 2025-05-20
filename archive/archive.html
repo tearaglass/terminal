@@ -148,7 +148,7 @@
           landing.style.display = 'none';
           blog.style.display = 'none';
           try {
-            const res = await fetch(`/archive/sections/${pageName}.html`);
+            const res = await fetch(`sections/${pageName}.html`);
             const html = await res.text();
             document.querySelector('.main').innerHTML = html;
           } catch (err) {
