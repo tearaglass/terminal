@@ -12,7 +12,7 @@ body.girlmode {
   background-size: 200%;
   animation: gradientShift 20s ease infinite;
   color: #222;
-  cursor: url('/assets/cursors/heart.cur') 0 0, auto;
+  cursor: url('https://tearaglass.github.io/terminal/assets/cursors/heart.cur') 0 0, auto;
 }
 
 body.girlmode .prompt,
