@@ -1,0 +1,52 @@
+
+html, body, * {
+  font-family: monospace
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles go here */
+
+
+
+body.girlmode {
+    background: linear-gradient(45deg, #e6e6fa, #f8f8ff); /* subtle lavender hues */
+    background-size: 200%;
+    animation: gradientShift 20s ease infinite;
+    color: #222;
+    font-family: monospace;
+    cursor: url('/assets/cursors/heart.cur') 0 0, auto;
+  }
+
+body.girlmode .prompt,
+body.girlmode button {
+  color: #108b0c; /* chartreuse */
+  border-color: #dfff00;
+}
+
+body.girlmode .terminal-line::before {
+  content: '✿ ';
+  color: #d63384;
+}
+
+body.girlmode .popup {
+  border-color: #dfff00;
+  background-color: rgba(230, 230, 250, 0.3);
+  color: #000;
+  box-shadow: 0 0 16px rgba(223, 255, 0, 0.5);
+}
+
+body.girlmode .popup-header {
+  color: #d63384;
+}
+
+body.girlmode .popup-content a {
+  color: #d63384;
+}
+
+body.girlmode .popup-content a:hover {
+  color: #000;
+  text-decoration: underline;
+}

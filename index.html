@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="PLUSH✿VAULT: A portal to divergent universes by Delaney Mills." />
+    <title>PLUSH✿VAULT</title>
+    <link rel="icon" href="/archive/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="output.css" />
+    <style>
+        body {
+        font-family: 'VCR', monospace;
+        background-color: #000;
+        background: linear-gradient(45deg, #0e0e0e, #1e1e1e);
+        background-size: 400%;
+        animation: gradientShift 10s ease infinite;
+        color: white;
+        padding: 2rem;
+      }
+      @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+      .popup {
+  width: 90vw;
+  max-width: 360px;
+  z-index: 1000;
+  background-color: rgba(255, 192, 203, 0.2);
+  backdrop-filter: blur(14px);
+  border: 1px solid #ff69b4;
+  color: #ffb6c1;
+  font-family: 'Quicksand', monospace;
+  box-shadow: 0 0 16px rgba(255, 105, 180, 0.5);
+  border-radius: 8px;
+  padding: 1.25rem;
+  position: absolute;
+  top: 10vh;
+  left: 5vw;
+  animation: fadeIn 0.3s ease;
+}
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 0.875rem;
+  color: #ff99dd;
+  cursor: move;
+  margin: -1.25rem -1.25rem 0.5rem -1.25rem;
+  padding: 0.5rem 1rem;
+  border-top: 1px solid #fcb8ec;
+}
+
+.popup .popup-header button {
+  background: none;
+  border: none;
+  color: #ff69b4;
+  font-weight: bold;
+  font-size: 1.125rem;
+  cursor: pointer;
+}
+
+.popup .popup-content {
+  max-height: 20rem;
+  overflow-y: auto;
+  font-size: 0.95rem;
+  line-height: 1.25rem;
+  padding: 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: #fcb8ec transparent;
+}
+
+.popup-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.popup-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.popup-content::-webkit-scrollbar-thumb {
+  background: linear-gradient(#fcb8ec, #ff99dd);
+  border-radius: 10px;
+}
+
+.popup pre, .popup p {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin: 0 0 0.5rem 0;
+}
+
+.popup-content a {
+  color: #fcb8ec;
+  transition: color 0.2s ease;
+}
+
+.popup-content a:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 640px) {
+  .popup {
+    width: 90vw;
+    max-width: 320px;
+  }
+}
+      /*
+      .popup {
+        width: 300px;
+        z-index: 1000;
+        background-color: rgba(255, 192, 203, 0.15);
+        backdrop-filter: blur(12px);
+        border: 1px solid #ff69b4;
+        color: #ffb6c1;
+        font-family: monospace;
+        box-shadow: 0 0 12px rgba(255, 105, 180, 0.4);
+        border-radius: 6px;
+        padding: 1rem;
+        position: absolute;
+        animation: fadeIn 0.3s ease;
+      }
+  
+      .popup-content {
+        max-height: 300px;
+        overflow-y: auto;
+        padding: 1rem;
+        font-size: 0.5rem;
+        line-height: 0.9rem;
+        scrollbar-width: thin;
+        scrollbar-color: #fcb8ec #1e1e1e;
+      }
+      .popup-content::-webkit-scrollbar {
+        width: 6px;
+      }
+      .popup-content::-webkit-scrollbar-track {
+        background: #1e1e1e;
+      }
+      .popup-content::-webkit-scrollbar-thumb {
+        background-color: #fcb8ec;
+      }
+        */
+      .song-link {
+        color: #fcb8ec;
+        text-decoration: none;
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+      .song-link:hover {
+        color: #ffffff;
+        text-decoration: underline;
+      }
+      .song-link.current-song {
+        color: #ff99dd;
+        font-weight: bold;
+      }
+      .cli {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 2rem;
+        align-items: center;
+      }
+      #input {
+        flex-grow: 1;
+        background: transparent;
+        border: none;
+        color: inherit;
+        outline: none;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.9); }
+        to { opacity: 1; transform: scale(1); }
+      }
+      .glitch {
+        animation: glitch 0.5s ease;
+      }
+      @keyframes glitch {
+        0% { transform: translate(0); opacity: 1; }
+        20% { transform: translate(-2px, 2px); opacity: 0.8; }
+        40% { transform: translate(2px, -2px); opacity: 0.6; }
+        60% { transform: translate(-2px, 2px); opacity: 0.8; }
+        100% { transform: translate(0); opacity: 0; }
+      }
+      @media (max-width: 640px) {
+        .popup {
+          width: 90vw;
+          max-width: 280px;
+        }
+      }
+    </style>
+  </head>
+<body>
+  <div id="terminal" class="max-w-xl mx-auto">
+    <div id="output" role="log" aria-live="polite" class="text-pink-400 text-sm">
+      <p>PLUSH✿VAULT</p>
+      <p>with love, from: delaney_mills, a.k.a. "teara"</p>
+      <p>Status: dream seeding ✧ ✧ ✧</p>
+      <br />
+      <p class="italic text-fuchsia-500">✟healed by haunting✟</p>
+      <br />
+      <div id="now-playing" class="mt-4 text-pink-300">
+        <p class="text-sm italic mb-1">🎵 now playing: <span id="track-name">None</span></p>
+      </div>
+    </div>
+    <div class="cli">
+      <span class="prompt text-pink-500">></span>
+      <input type="text" id="input" aria-label="Command line input" autofocus />
+    </div>
+  </div>
+  <div id="popup-root"></div>
+  <script src="js/main.js"></script>
+</body>
+</html>
