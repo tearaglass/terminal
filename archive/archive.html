@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Archive</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: small;
+      background: white;
+      color: black;
+    }
+    .container {
+      display: flex;
+    }
+    .sidebar {
+      background: #cccccc;
+      width: 100px;
+      padding: 1rem 0.5rem;
+      min-height: 100vh;
+    }
+    .sidebar a {
+      display: block;
+      background: #3c27ff;
+      padding: 0.4rem 0.5rem;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      margin-bottom: 1px;
+      border: 2px outset #ccc;
+    }
+    .sidebar a:hover {
+      background: #604eff;
+    }
+    .main {
+      flex: 1;
+      padding: 2rem;
+      max-width: 700px;
+    }
+    h1 {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+    article {
+      margin-bottom: 3rem;
+    }
+    .date {
+      font-size: 0.9rem;
+      color: #555;
+    }
+    a {
+      color: #00c;
+    }
+    a:hover {
+      color: rgb(250, 255, 225);
+    }
+
+  .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+  .gallery-grid img {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    }
+
+  .gallery-grid img:hover {
+  transform: scale(1.05);
+  }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar" role="navigation" aria-label="Main navigation">
+      <a href="archive.html" class="home-link" aria-label="Return to portal">Home</a>
+      <a href="#" class="placeholder-link" data-page="About">About</a>
+      <a href="fieldnotes.html" id="fieldnotes-link">Fieldnotes</a>
+      <a href="#" class="placeholder-link" data-page="Gallery">Gallery</a>
+      <a href="#" class="placeholder-link" data-page="Guestbook">Guestbook</a>
+      <a href="#" class="placeholder-link" data-page="CV">CV</a>
+      <a href="#" class="placeholder-link" data-page="Press">Press</a>
+      <a href="#" class="placeholder-link" data-page="Contact">Contact</a>
+    </div>
+    <div class="main" role="main">
+      <div id="landing-content">
+        <h1>hope is lost. she's waiting for you to go and find her.</h1>
+        <img src="/archive/images/your-image.png" alt="mystic relic" style="max-width: 30%; margin-top: 1rem;">
+      </div>
+      <div id="blog-container" style="display:none;"></div>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const blogLink = document.getElementById('fieldnotes-link');
+      const landing = document.getElementById('landing-content');
+      const blog = document.getElementById('blog-container');
+
+      blogLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        landing.style.display = 'none';
+        blog.style.display = 'block';
+        loadMorePosts();
+      });
+
+      let postIndex = 0;
+      let loading = false;
+
+      function loadMorePosts() {
+        if (loading) return;
+        loading = true;
+
+        const post = document.createElement('article');
+        post.innerHTML = `
+          <h2>Blog Post ${postIndex + 1}</h2>
+          <p class="date">May 15, 2025</p>
+          <p>This is a placeholder for blog post content. It will be replaced by real entries later.</p>
+        `;
+        blog.appendChild(post);
+
+        postIndex++;
+        loading = false;
+      }
+
+      window.addEventListener('scroll', () => {
+        if (blog.style.display === 'block') {
+          const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+          if (scrollTop + clientHeight >= scrollHeight - 10) {
+            loadMorePosts();
+          }
+        }
+      });
+
+      const placeholderLinks = document.querySelectorAll('.placeholder-link');
+      placeholderLinks.forEach(link => {
+        link.addEventListener('click', async (e) => {
+          e.preventDefault();
+          const pageName = link.dataset.page.toLowerCase();
+          landing.style.display = 'none';
+          blog.style.display = 'none';
+          try {
+            const res = await fetch(`/archive/sections/${pageName}.html`);
+            const html = await res.text();
+            document.querySelector('.main').innerHTML = html;
+          } catch (err) {
+            document.querySelector('.main').innerHTML = `<h1>Error</h1><p>Could not load ${pageName}.html</p>`;
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
