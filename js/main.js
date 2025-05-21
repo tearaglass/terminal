@@ -255,6 +255,7 @@ function handleCommand(cmd) {
 ★ lab
 ★ girlmode
 ★ boymode
+★ clear
 ★ help`;
     createPopup('Help', `<pre>${helpText}</pre>`);
     return null;
